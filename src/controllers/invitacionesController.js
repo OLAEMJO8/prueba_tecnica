@@ -1,14 +1,16 @@
 import { pool } from "../db.js";
 
 export const getInvitaciones = async (req, res, next) => {
-  const result = await pool.query("SELECT * FROM invitaciones");
+  const result = await pool.query(
+    "SELECT * FROM invitacion WHERE user_id = $1",
+    [req.userId]
+  );
 
-  // console.log(result.rows);
   return res.json(result.rows);
 };
 
 export const getInvitacion = async (req, res) => {
-  const result = await pool.query("SELECT * FROM invitaciones WHERE id = $1", [
+  const result = await pool.query("SELECT * FROM invitacion WHERE id = $1", [
     req.params.id,
   ]);
   if (result.rows.length === 0) {
@@ -21,8 +23,8 @@ export const postInvitacion = async (req, res) => {
   const { name, timein, timeout } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO invitaciones (name, timein, timeout) VALUES ($1,$2,$3) RETURNING *",
-      [name, timein, timeout]
+      "INSERT INTO invitacion (name, timein, timeout, user_id) VALUES ($1,$2,$3,$4) RETURNING *",
+      [name, timein, timeout, req.userId]
     );
     // console.log(result.rows[0]);
     res.json(result.rows[0]);
@@ -38,7 +40,7 @@ export const putInvitacion = async (req, res) => {
   const { name, timein, timeout } = req.body;
 
   const result = await pool.query(
-    "UPDATE invitaciones SET name = $1, timein = $2, timeout =$3 WHERE id =$4 RETURNING *",
+    "UPDATE invitacion SET name = $1, timein = $2, timeout =$3 WHERE id =$4 RETURNING *",
     [name, timein, timeout, id]
   );
   if (result.rowCount === 0) {
@@ -50,7 +52,7 @@ export const putInvitacion = async (req, res) => {
 
 export const deleteInvitacion = async (req, res) => {
   const result = await pool.query(
-    "DELETE FROM invitaciones WHERE id = $1 RETURNING *",
+    "DELETE FROM invitacion WHERE id = $1 RETURNING *",
     [req.params.id]
   );
 
