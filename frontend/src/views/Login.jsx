@@ -3,7 +3,8 @@ import Input from "../Components/Utils/Input";
 import Card from "../Components/Utils/Card";
 import Button from "../Components/Utils/Button";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import { useAuth } from "../context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const {
@@ -11,15 +12,16 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const onSubmit = handleSubmit(async (data) => {
-    const res = await axios.post("http://localhost:3000/api/login", data, {
-     withCredentials:true
-    });
-    console.log(res);
+    await login(data);
+    navigate("/profile");
   });
   return (
     <div className="h-[calc(100vh-10rem)] flex items-center justify-center">
       <Card>
+        <h1 className="text-4xl font-bold my-2 text-center">Login</h1>
         <form onSubmit={onSubmit}>
           <Input
             placeholder="Ingresa tu nombre"
@@ -55,6 +57,12 @@ function Login() {
             <p className="text-red-500">direccion es requerida</p>
           )}
           <Button> Registrarme</Button>
+          <div className="flex justify-between my-4">
+            <p className="mr-4">Estas registrado?</p>
+            <Link to="/singin" className="font-bold">
+              Inicia sesion
+            </Link>
+          </div>
         </form>
       </Card>
     </div>

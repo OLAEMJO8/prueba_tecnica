@@ -11,7 +11,9 @@ export const postLogin = async (req, res, next) => {
       [name, lastname, email, hashesPassword, numberdpto]
     );
     const token = await createToken({ id: result.rows[0].id });
-    res.cookie("token", token, { secure: true, sameSite: "none" });
+    res.cookie("token", token, {
+      //  httpOnly: true
+      secure: true, sameSite: "none" });
     return res.json(result.rows[0]);
   } catch (error) {
     if (error.code === "23505") {
@@ -42,7 +44,11 @@ export const postSingin = async (req, res) => {
 
   const token = await createToken({ id: result.rows[0].id });
 
-  res.cookie("token", token, { httpOnly: true, sameSite: "none" });
+  res.cookie("token", token, {
+    //  httpOnly: true
+    secure: true,
+    sameSite: "none",
+  });
   return res.json(result.rows[0]);
 };
 //! Cerrar sesion

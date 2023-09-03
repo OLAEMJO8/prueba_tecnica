@@ -1,9 +1,10 @@
 import React from 'react';
-
+import {useAuth} from '../context/AuthContext';
 function ProfileInvitaciones(props) {
+    const {user}= useAuth()
     return (
         <div>
-            Ver y eliminar invitaciones
+            {JSON.stringify(user)}
         </div>
     );
 }
