@@ -30,7 +30,7 @@ export const postInvitacion = async (req, res) => {
     res.json(result.rows[0]);
   } catch (error) {
     if (error.code === "23505") {
-      return res.status(409).json({ message: "Usuario ya invitado" });
+      return res.status(409).json({ message: "Usuario ya invitado, selecciona otro nombre" });
     }
   }
 };

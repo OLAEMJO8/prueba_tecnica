@@ -13,7 +13,8 @@ export const postLogin = async (req, res, next) => {
     const token = await createToken({ id: result.rows[0].id });
     res.cookie("token", token, {
       //  httpOnly: true
-      secure: true, sameSite: "none" });
+      secure: true,
+       sameSite: "none" });
     return res.json(result.rows[0]);
   } catch (error) {
     if (error.code === "23505") {

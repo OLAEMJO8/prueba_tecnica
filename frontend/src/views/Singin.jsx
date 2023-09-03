@@ -9,19 +9,23 @@ function Singin() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
-  const { singin} = useAuth();
+  const { singin,  errors} = useAuth();
 
   const navigate = useNavigate();
   const onSubmit = handleSubmit(async (data) => {
-   await singin(data)
-   navigate("/profile");
+    const user = await singin(data);
+    if (user) {
+      navigate("/profile");
+    }
   });
 
   return (
-    <div className="h-[calc(100vh-10rem)] flex items-center justify-center">
+    <div className="h-[calc(100vh-7rem)] flex items-center justify-center">
       <Card>
+    
+        {errors && errors.map(err=>(<p className="bg-red-500 text-center">{err}</p>))}
         <h1 className="text-4xl font-bold my-2 text-center">Sign in</h1>
         <form onSubmit={onSubmit}>
           <Input
@@ -29,15 +33,15 @@ function Singin() {
             placeholder="Correo electronico"
             {...register("email", { required: true })}
           />
-          {errors.email && <p className="text-red-500">email es requerido</p>}
+          {/* {errors.email && <p className="text-red-500">email es requerido</p>} */}
           <Input
             type="password"
             placeholder="Contraseña"
             {...register("password", { required: true })}
           />
-          {errors.password && (
+          {/* {errors.password && (
             <p className="text-red-500">contraseña es requerida</p>
-          )}
+          )} */}
 
           <Button>Iniciar sesion</Button>
           <div className="flex justify-between my-4">

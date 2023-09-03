@@ -12,15 +12,19 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { login } = useAuth();
+  const { login ,errors:loginErrors} = useAuth();
   const navigate = useNavigate();
   const onSubmit = handleSubmit(async (data) => {
-    await login(data);
-    navigate("/profile");
+    const user = await login(data);
+    if(user){
+
+      navigate("/profile");
+    }
   });
   return (
-    <div className="h-[calc(100vh-10rem)] flex items-center justify-center">
+    <div className="h-[calc(100vh-5rem)] flex items-center justify-center">
       <Card>
+      {loginErrors && loginErrors.map(err=>(<p className="bg-red-500 text-center">{err}</p>))}
         <h1 className="text-4xl font-bold my-2 text-center">Login</h1>
         <form onSubmit={onSubmit}>
           <Input
