@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import Input from "../Components/Utils/Input";
 import { createInvitacionRequest } from "../api/task.api";
+import moment from "moment"; // Agrega la importación de moment
 
 function NewInvitacion() {
   const {
@@ -27,28 +28,23 @@ function NewInvitacion() {
 
   const onSubmit = handleSubmit(async (data) => {
     const formatDate = (date) => {
-      const year = date.getFullYear();
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const hours = date.getHours().toString().padStart(2, '0');
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      const formattedDate = moment(date).format("YYYY-MM-DD HH:mm:ss"); // Formatea la fecha usando moment
+      return formattedDate;
     };
-  
+
     const formData = {
       name: data.name,
-      timein: formatDate(fechaEntrada), // Ajusta el nombre del campo a "timein"
-      timeout: formatDate(fechaSalida), // Ajusta el nombre del campo a "timeout"
+      timein: formatDate(fechaEntrada), // Formatea la fecha de entrada
+      timeout: formatDate(fechaSalida), // Formatea la fecha de salida
     };
-  console.log(formData)
-    const res = await createInvitacionRequest(formData)
-  console.log(res)
-});
-  
+
+    console.log(formData);
+    const res = await createInvitacionRequest(formData);
+    console.log(res);
+  });
 
   return (
-    <div className="flex h-[80vh] justify-center items-center">
+    <div className="h-[calc(100vh-5rem)] flex items-center justify-center">
       <Card>
         <form onSubmit={onSubmit}>
           <h1 className="text-4xl font-bold my-2 text-center">Invitacion</h1>
@@ -65,7 +61,8 @@ function NewInvitacion() {
           {errors.name && (
             <span className="text-red-500">Nombre es requerido</span>
           )}
-
+          <br />
+          
           <label>Fecha y Hora de entrada</label>
           <br />
           <DatePicker
@@ -77,8 +74,9 @@ function NewInvitacion() {
             className="bg-zinc-800 px-3 py-2 block my-2 w-full"
           />
           <br />
-
+          <br />
           <label>Fecha y Hora de salida</label>
+          <br />
           <DatePicker
             selected={fechaSalida}
             onChange={onChangeSalida}
