@@ -5,20 +5,35 @@ import Login from './views/Login';
 import Singin from './views/Singin';
 import NewInvitacion from './views/NewInvitacion';
 import ProfileInvitaciones from './views/ProfileInvitaciones';
-import EditarInvitaciones from './views/EditarInvitaciones';
+import Navbar from './Components/Navbar';
+import { InicioSesion } from "./Components/InicioSesion";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
-
+  const { isAuth} = useAuth();
 
   return (
+    <>
+    <Navbar/>
+    <div className="max-w-7xl px-4 mx-auto">
+
     <Routes>
-      <Route exact path="/" element={<Home/>}/>
+
+    <Route element={<InicioSesion isAllowed={!isAuth} redirectTo="/profile"/>}>
+      <Route exact path="/home" element={<Home/>}/>
       <Route exact path="/login" element={<Login/>}/>
       <Route exact path="/singin" element={<Singin/>}/>
-      <Route exact path="/new" element={<NewInvitacion/>}/>
+      
+    </Route>
+    <Route element={<InicioSesion isAllowed={isAuth} redirectTo="/login"/>}>
+     
       <Route exact path="/profile" element={<ProfileInvitaciones/>}/>
-      <Route exact path="/edit" element={<EditarInvitaciones/>}/>
+      <Route exact path="/new" element={<NewInvitacion/>}/>
+      
+    </Route>
     </Routes>
+    </div>
+    </>
   )
 }
 
