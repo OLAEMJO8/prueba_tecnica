@@ -3,6 +3,8 @@ import {
   getPerfil,
   postLogin,
   postLogout,
+  postRecovery,
+  postResetPassword,
   postSingin,
 } from "../controllers/authController.js";
 import { isAuth } from "../middlewares/auth.middlewares.js";
@@ -14,4 +16,9 @@ router.post("/signin", validateSchemas(singinSchema), postSingin);
 router.post("/logout", postLogout);
 router.get("/perfil", isAuth, getPerfil);
 
+
+router.post('/recover-password', postRecovery);
+
+
+router.post('/reset-password', postResetPassword);
 export default router;

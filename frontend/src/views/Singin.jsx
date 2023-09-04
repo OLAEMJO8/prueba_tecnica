@@ -11,7 +11,7 @@ function Singin() {
     handleSubmit,
     // formState: { errors },
   } = useForm();
-  const { singin,  errors} = useAuth();
+  const { singin, errors } = useAuth();
 
   const navigate = useNavigate();
   const onSubmit = handleSubmit(async (data) => {
@@ -19,13 +19,14 @@ function Singin() {
     if (user) {
       navigate("/profile");
     }
+   
   });
 
   return (
     <div className="h-[calc(100vh-7rem)] flex items-center justify-center">
       <Card>
-    
-        {errors && errors.map(err=>(<p className="bg-red-500 text-center">{err}</p>))}
+        {errors &&
+          errors.map((err) => <p className="bg-red-500 text-center">{err}</p>)}
         <h1 className="text-4xl font-bold my-2 text-center">Sign in</h1>
         <form onSubmit={onSubmit}>
           <Input
@@ -50,6 +51,9 @@ function Singin() {
               Register
             </Link>
           </div>
+          <Link to="/recover-password" className="font-bold">
+            ¿Olvidaste tu contraseña?
+          </Link>
         </form>
       </Card>
     </div>
