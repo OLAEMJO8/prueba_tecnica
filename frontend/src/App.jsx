@@ -15,21 +15,22 @@ function App() {
     <>
       <Navbar />
 
-      <Routes>
-        <Route
-          element={<InicioSesion isAllowed={!isAuth} redirectTo="/profile" />}
-        >
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/singin" element={<Singin />} />
-        </Route>
-        <Route
-          element={<InicioSesion isAllowed={isAuth} redirectTo="/login" />}
-        >
-          <Route exact path="/profile" element={<ProfileInvitaciones />} />
-          <Route exact path="/new" element={<NewInvitacion />} />
-        </Route>
-      </Routes>
+    <Routes>
+
+    <Route element={<InicioSesion isAllowed={!isAuth} redirectTo="/profile"/>}>
+      <Route exact path="/home" element={<Home/>}/>
+      <Route exact path="/login" element={<Login/>}/>
+      <Route exact path="/singin" element={<Singin/>}/>
+      
+    </Route>
+    <Route element={<InicioSesion isAllowed={isAuth} redirectTo="/login"/>}>
+     
+      <Route exact path="/profile" element={<ProfileInvitaciones/>}/>
+      <Route exact path="/new" element={<NewInvitacion/>}/>
+      
+    </Route>
+    </Routes>
+    </div>
     </>
   );
 }
