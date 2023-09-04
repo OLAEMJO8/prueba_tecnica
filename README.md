@@ -8,7 +8,7 @@ Para inicializar el proyecto en tu repositorio es necesario tener instalado Node
 git clone https://github.com/OLAEMJO8/Nextia_tecnico.git
 cd Nextia_tecnico
 npm install
-npm start
+npm run dev
 ```
 
 
