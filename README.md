@@ -4,10 +4,12 @@
 
 Para inicializar el proyecto en tu repositorio es necesario tener instalado Node.js en tu computadora. Puedes ejecutar los siguientes comandos para clonar y ejecutar el proyecto :
 
+```bash
 git clone https://github.com/OLAEMJO8/Nextia_tecnico.git
 cd Nextia_tecnico
 npm install
 npm start
+```
 
 
 ## Scripts disponibles
