@@ -2,8 +2,8 @@ CREATE TABLE invitacion (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL,
    timein DATE,
-    timeout DATE,
-);
+    timeout DATE
+)
 ALTER DATABASE invitacion SET timezone = 'UTC';
 ALTER TABLE invitacion ADD COLUMN user_id INTEGER REFERENCES users(id);
 CREATE TABLE users (
