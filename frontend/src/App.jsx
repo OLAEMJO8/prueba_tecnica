@@ -18,7 +18,7 @@ function App() {
     <Routes>
 
     <Route element={<InicioSesion isAllowed={!isAuth} redirectTo="/profile"/>}>
-      <Route exact path="/home" element={<Home/>}/>
+      <Route exact path="/" element={<Home/>}/>
       <Route exact path="/login" element={<Login/>}/>
       <Route exact path="/singin" element={<Singin/>}/>
       

@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 const navigationPublica = [
   {
     name: "Home",
-    path: "/home",
+    path: "/",
   },
   {
     name: "Login",
