@@ -57,6 +57,14 @@ function ProfileInvitaciones() {
   const navigate = useNavigate();
   return (
     <div className="px-7 py-4 flex flex-col justify-center gap-2">
+       {currentInvs.length === 0 ? (
+        <div className="text-center mt-8">
+          <p className="text-3xl font-black text-black mb-4 flex justify-center  ">No hay invitaciones disponibles.</p>
+         
+        </div>
+      ) : (
+        <div>
+
       <div className="flex justify-center mt-4">
         <button
           className={
@@ -137,6 +145,7 @@ function ProfileInvitaciones() {
   </div>
 ))}
       </div>
+        </div>)}
     </div>
   );
 }

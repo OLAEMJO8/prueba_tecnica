@@ -32,10 +32,10 @@ const navigationPrivada = [
 function Navbar() {
   const{isAuth, logout}=useAuth()
   return (
-    <nav className="bg-gray-800 ">
+    <nav className="bg-gray-900 ">
       <div className="max-w-7xl px-4 mx-auto ">
         <div className="flex justify-between  py-3">
-        <h1 className="font-bold text-2xl">Nextia</h1>
+        <h1 className="font-bold text-2xl text-[#FA573E]">Nextia</h1>
           <ul className="flex gap-x-2">
             {isAuth? 
             <>
