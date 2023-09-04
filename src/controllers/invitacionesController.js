@@ -20,27 +20,7 @@ export const getInvitacion = async (req, res) => {
   return res.json(result.rows[0]);
 };
 
-// export const postInvitacion = async (req, res) => {
-//   const { name, timein, timeout } = req.body;
-//   const formattedTimein = moment(timein).format("YYYY-MM-DD HH:mm:ss");
-//   const formattedTimeout = moment(timeout).format("YYYY-MM-DD HH:mm:ss");
 
-//   try {
-//     const result = await pool.query(
-//       "INSERT INTO invitacion (name, timein, timeout, user_id) VALUES ($1, $2, $3, $4) RETURNING *",
-//       [name, formattedTimein, formattedTimeout, req.userId]
-//     );
-
-//     res.json(result.rows[0]);
-//   } catch (error) {
-//     if (error.code === "23505") {
-//       return res
-//         .status(409)
-//         .json({ message: "Usuario ya invitado, selecciona otro nombre" });
-//     }
-//   }
-
-// };
 export const postInvitacion = async (req, res) => {
   const { name, timein, timeout } = req.body;
 

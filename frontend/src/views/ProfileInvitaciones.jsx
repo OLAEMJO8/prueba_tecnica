@@ -3,8 +3,9 @@ import moment from "moment";
 import QRCode from "react-qr-code";
 import Card from "../Components/Utils/Card";
 import Button from "../Components/Utils/Button";
+import { useNavigate } from "react-router-dom";
 
-import { getInvitacionRequest } from "../api/task.api";
+import { deleteInvitacion, getInvitacionRequest } from "../api/task.api";
 
 function ProfileInvitaciones() {
   const [invs, setInvs] = useState([]);
@@ -40,6 +41,20 @@ function ProfileInvitaciones() {
     setCurrentPage(pageNumber);
   };
 
+  const handleDeleteInvitacion = async (id) => {
+    if (window.confirm("¿Estás seguro de eliminar esta invitación?")) {
+      try {
+        await deleteInvitacion(id);
+
+        const updatedInvs = invs.filter((inv) => inv.id !== id);
+
+        setInvs(updatedInvs);
+      } catch (error) {
+        console.error("Error al eliminar la invitación:", error);
+      }
+    }
+  };
+  const navigate = useNavigate();
   return (
     <div className="px-7 py-4 flex flex-col justify-center gap-2">
       <div className="flex justify-center mt-4">
@@ -79,46 +94,48 @@ function ProfileInvitaciones() {
         </button>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {currentInvs.map((inv, index) => (
-          <div key={inv.id}>
-            <Card className="flex flex-col items-center">
-              <h1 className="uppercase font-bold text-3xl flex justify-center ">
-                {inv.name}
-              </h1>
-              <div className="flex justify-center gap-2 mt-4">
-                <div
-                  className={
-                    "relative inline-flex items-center gap-x-1.5 rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold text-white "
-                  }
-                >
-                  <div className="flex flex-col text-center">
-                    <p>Fecha de entrada</p>
-                    <p>{formatDate(inv.timein)}</p>
-                  </div>
-                </div>
-                <div
-                  className={
-                    "relative inline-flex items-center gap-x-1.5 rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold text-white "
-                  }
-                >
-                  <div className="flex flex-col text-center">
-                    <p>Fecha de salida</p>
-                    <p>{formatDate(inv.timeout)}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 flex justify-center">
-                <QRCode value={jsonDataArray[index]} size={120} />
-              </div>
-              <div className="my-2 flex justify-center gap-x-2 py-2">
-                <Button>Editar</Button>
-                <Button>
-                  Eliminar
-                </Button>
-              </div>
-            </Card>
+      {currentInvs.map((inv, index) => (
+  <div key={inv.id}>
+    <Card className="flex flex-col items-center">
+      <h1 className="uppercase font-bold text-3xl flex justify-center ">
+        {inv.name}
+      </h1>
+      <div className="flex justify-center gap-2 mt-4">
+        <div
+          className={
+            "relative inline-flex items-center gap-x-1.5 rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold text-white "
+          }
+        >
+          <div className="flex flex-col text-center">
+            <p>Fecha de entrada</p>
+            <p>{formatDate(inv.timein)}</p>
           </div>
-        ))}
+        </div>
+        <div
+          className={
+            "relative inline-flex items-center gap-x-1.5 rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold text-white "
+          }
+        >
+          <div className="flex flex-col text-center">
+            <p>Fecha de salida</p>
+            <p>{formatDate(inv.timeout)}</p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 flex justify-center">
+        <QRCode value={jsonDataArray[index]} size={120} />
+      </div>
+      <div className="my-2 flex justify-center gap-x-2 py-2">
+  
+        <Button
+          onClick={() => handleDeleteInvitacion(inv.id)}
+        >
+          Eliminar
+        </Button>
+      </div>
+    </Card>
+  </div>
+))}
       </div>
     </div>
   );

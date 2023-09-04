@@ -5,7 +5,6 @@ import Login from './views/Login';
 import Singin from './views/Singin';
 import NewInvitacion from './views/NewInvitacion';
 import ProfileInvitaciones from './views/ProfileInvitaciones';
-import EditarInvitaciones from './views/EditarInvitaciones';
 import Navbar from './Components/Navbar';
 import { InicioSesion } from "./Components/InicioSesion";
 import { useAuth } from "./context/AuthContext";
@@ -30,7 +29,7 @@ function App() {
      
       <Route exact path="/profile" element={<ProfileInvitaciones/>}/>
       <Route exact path="/new" element={<NewInvitacion/>}/>
-      <Route exact path="/edit" element={<EditarInvitaciones/>}/>
+      
     </Route>
     </Routes>
     </div>
