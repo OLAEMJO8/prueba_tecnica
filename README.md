@@ -32,12 +32,7 @@ En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 
 # Nextia Técnico
 
-![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/nextia_tecnico)
-![GitHub contributors](https://img.shields.io/github/contributors/yourusername/nextia_tecnico)
-![GitHub stars](https://img.shields.io/github/stars/yourusername/nextia_tecnico?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/nextia_tecnico?style=social)
-
-Este es un proyecto Node.js simple que utiliza Express y otras bibliotecas para crear una aplicación backend. El proyecto incluye configuraciones iniciales para ayudarte a comenzar con tu aplicación de servidor.
+Este es un proyecto Node.js simple que utiliza Express y otras bibliotecas para crear una aplicación backend.
 
 
 ## Dependencias principales
