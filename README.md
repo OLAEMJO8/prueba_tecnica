@@ -1,11 +1,14 @@
-# Vite Project
+# Nexttia 
 
-![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/vite-project)
-![GitHub contributors](https://img.shields.io/github/contributors/yourusername/vite-project)
-![GitHub stars](https://img.shields.io/github/stars/yourusername/vite-project?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/vite-project?style=social)
+## Inicializar
 
-Este es un proyecto Vite de ejemplo con configuraciones iniciales para ayudarte a comenzar con tu aplicación React. Este proyecto utiliza Vite como herramienta de desarrollo y varias dependencias populares de React y otras bibliotecas.
+Para inicializar el proyecto en tu repositorio es necesario tener instalado Node.js en tu computadora. Puedes ejecutar los siguientes comandos para clonar y ejecutar el proyecto :
+
+git clone https://github.com/OLAEMJO8/Nextia_tecnico.git
+cd Nextia_tecnico
+npm install
+npm start
+
 
 ## Scripts disponibles
 
@@ -36,12 +39,6 @@ En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 
 Este es un proyecto Node.js simple que utiliza Express y otras bibliotecas para crear una aplicación backend. El proyecto incluye configuraciones iniciales para ayudarte a comenzar con tu aplicación de servidor.
 
-## Scripts disponibles
-
-En el directorio del proyecto, puedes ejecutar los siguientes comandos:
-
-- `npm run dev`: Inicia el servidor de desarrollo utilizando Nodemon para recargar automáticamente cuando se realizan cambios.
-- `npm start`: Inicia la aplicación en modo de producción.
 
 ## Dependencias principales
 
