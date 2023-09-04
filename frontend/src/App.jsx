@@ -21,14 +21,14 @@ function App() {
 
     <Route element={<InicioSesion isAllowed={!isAuth} redirectTo="/profile"/>}>
       <Route exact path="/home" element={<Home/>}/>
-      <Route exact path="/login" element={<Login/>}/>
-      <Route exact path="/singin" element={<Singin/>}/>
+      <Route exact path="/home/login" element={<Login/>}/>
+      <Route exact path="/home/singin" element={<Singin/>}/>
       
     </Route>
     <Route element={<InicioSesion isAllowed={isAuth} redirectTo="/login"/>}>
      
-      <Route exact path="/profile" element={<ProfileInvitaciones/>}/>
-      <Route exact path="/new" element={<NewInvitacion/>}/>
+      <Route exact path="/home/profile" element={<ProfileInvitaciones/>}/>
+      <Route exact path="/home/new" element={<NewInvitacion/>}/>
       
     </Route>
     </Routes>
