@@ -5,10 +5,12 @@ import cookieParser from "cookie-parser"; //Leer cookie de Header
 import invitacionesRoutes from "./routes/invitacionesRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
+import { ORIGIN } from "./config.js";
+
 
 const app = express();
 
-app.use(cors({  origin: "http://localhost:5173", credentials: true }));
+app.use(cors({  origin: ORIGIN, credentials: true }));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());

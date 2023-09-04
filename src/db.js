@@ -1,13 +1,14 @@
 //Conexion Base de datos
 
 import pg from "pg";
+import { PG_DATABASE, PG_HOST, PG_PASSWORD, PG_PORT, PG_USER } from "./config.js";
 
 export const pool = new pg.Pool({
-  port: 5432,
-  host: "localhost",
-  user: "postgres",
-  password: "123456",
-  database: "invitacion"
+  port: PG_PORT,
+  host: PG_HOST,
+  user: PG_USER,
+  password: PG_PASSWORD,
+  database: PG_DATABASE,
 });
 
 pool.on("connect", () => {
