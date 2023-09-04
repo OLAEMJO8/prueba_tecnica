@@ -26,8 +26,6 @@ En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 - [axios](https://www.npmjs.com/package/axios): Para realizar solicitudes HTTP.
 - [react](https://www.npmjs.com/package/react) y [react-dom](https://www.npmjs.com/package/react-dom): Biblioteca principal de React.
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom): Para la navegación en la aplicación.
-- [redux](https://www.npmjs.com/package/redux) y [react-redux](https://www.npmjs.com/package/react-redux): Para la gestión del estado.
-- [redux-thunk](https://www.npmjs.com/package/redux-thunk): Middleware Redux para manejar acciones asincrónicas.
 - [eslint](https://www.npmjs.com/package/eslint) y complementos relacionados: Herramientas de linting para mantener el código limpio.
 - [tailwindcss](https://www.npmjs.com/package/tailwindcss): Utilizado para estilos CSS rápidos y personalizables.
 
