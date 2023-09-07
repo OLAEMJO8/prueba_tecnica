@@ -30,7 +30,7 @@ En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 - [tailwindcss](https://www.npmjs.com/package/tailwindcss): Utilizado para estilos CSS rápidos y personalizables.
 
 
-# Nextia Técnico
+# Técnico
 
 Este es un proyecto Node.js simple que utiliza Express y otras bibliotecas para crear una aplicación backend.
 
